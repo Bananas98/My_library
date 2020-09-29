@@ -74,34 +74,17 @@ CREATE TABLE IF NOT EXISTS `library_db`.`books`
 
 
 -- -----------------------------------------------------
--- Table `library_db`.`roles`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `library_db`.`roles`
-(
-    `id`   INT         NOT NULL,
-    `name` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`id`)
-)
-    ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `library_db`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `library_db`.`users`
 (
+    `id`       INT         NOT NULL AUTO_INCREMENT,
     `name`     VARCHAR(45) NOT NULL,
     `password` VARCHAR(45) NOT NULL,
     `email`    VARCHAR(45) NOT NULL,
-    `id_role`  INT         NOT NULL,
-    `id`       INT         NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (`id`),
-    INDEX `id_role_idx` (`id_role` ASC) VISIBLE,
-    CONSTRAINT `id_role`
-        FOREIGN KEY (`id_role`)
-            REFERENCES `library_db`.`roles` (`id`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION
+    `role` set('admin','librarian','reader') NOT NULL,
+    `bill`       DOUBLE      NOT NULL,
+    PRIMARY KEY (`id`)
 )
     ENGINE = InnoDB;
 
