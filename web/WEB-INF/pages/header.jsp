@@ -45,6 +45,9 @@
             <li><a href="${pageContext.request.contextPath}/main/searchBook">
                 <fmt:message key="library.button.search" bundle="${bundle}"/>
             </a></li>
+            <li><a href="${pageContext.request.contextPath}/main/signUp">
+                <fmt:message key="library.sign_up" bundle="${bundle}"/>
+            </a></li>
             <c:if test="${user.getRole().name() == 'LIBRARIAN'}">
                 <li><a href="${pageContext.request.contextPath}/main/signUp">
                     <fmt:message key="library.sign_up" bundle="${bundle}"/>

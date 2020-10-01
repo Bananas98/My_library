@@ -12,8 +12,8 @@
     <h2><fmt:message key="library.login" bundle="${bundle}"/></h2>
     <form action="./login" method="POST" role="form">
         <div class="form-group">
-            <label for=><fmt:message key="library.field.phone.number" bundle="${bundle}" />:</label>
-            <input class="form-control" id="phone-number" placeholder="+38(012)345-67-89" name="phone-number">
+            <label for=><fmt:message key="library.field.phone.email" bundle="${bundle}" />:</label>
+            <input class="form-control" id="email" placeholder="123@gmail.com" name="email">
         </div>
         <div class="form-group">
             <label for="password"><fmt:message key="library.field.password" bundle="${bundle}" />:</label>

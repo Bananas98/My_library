@@ -1,18 +1,18 @@
 package model.entity;
 
 public class User {
-    private int id;
+    private Integer id;
     private String name;
     private String email;
     private String password;
     private Role role;
     private double bill;
 
-    public User(int id) {
+    public User(Integer id) {
         this.id = id;
     }
 
-    public User(int id, String name, String email, String password, Role role, double bill) {
+    public User(Integer id, String name, String email, String password, Role role, double bill) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -21,11 +21,11 @@ public class User {
         this.bill = bill;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
