@@ -21,13 +21,12 @@ public class JdbcUserDao implements UserDao {
     }
 
     public void create(User user) {
-        String createQuery = "INSERT INTO USERS (name, password, email, role,bill) VALUES (?, ?, ?, ?,?)";
+        String createQuery = "INSERT INTO USERS (name, password, email, role) VALUES (?, ?, ?, ?)";
         try (PreparedStatement query = connection.prepareStatement(createQuery, Statement.RETURN_GENERATED_KEYS)) {
             query.setString(1, user.getName());
             query.setString(2, user.getPassword());
             query.setString(3, user.getEmail());
             query.setString(4, user.getRole().name().toLowerCase());
-            query.setDouble(5, user.getBill());
             query.executeUpdate();
 
             ResultSet keys = query.getGeneratedKeys();

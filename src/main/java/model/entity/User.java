@@ -6,13 +6,13 @@ public class User {
     private String email;
     private String password;
     private Role role;
-    private double bill;
+    private Double bill;
 
     public User(Integer id) {
         this.id = id;
     }
 
-    public User(Integer id, String name, String email, String password, Role role, double bill) {
+    public User(Integer id, String name, String email, String password, Role role, Double bill) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -61,11 +61,11 @@ public class User {
         this.role = role;
     }
 
-    public double getBill() {
+    public Double getBill() {
         return bill;
     }
 
-    public void setBill(double bill) {
+    public void setBill(Double bill) {
         this.bill = bill;
     }
     public static class Builder implements IBuilder<User> {
@@ -74,7 +74,7 @@ public class User {
         private String password;
         private String email;
         private Role role;
-        private double bill;
+        private Double bill;
 
         public Builder setId(Integer id) {
             this.id = id;

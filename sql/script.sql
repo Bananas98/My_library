@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `library_db`.`users`
     `password` VARCHAR(45) NOT NULL,
     `email`    VARCHAR(45) NOT NULL,
     `role` set('admin','librarian','reader') NOT NULL,
-    `bill`       DOUBLE      NOT NULL,
+    `bill`       DOUBLE,
     PRIMARY KEY (`id`)
 )
     ENGINE = InnoDB;
