@@ -11,6 +11,7 @@ import utils.PasswordHasher;
 import java.util.Optional;
 
 public class UserService {
+
     private static UserService instance = new UserService(DaoFactory.getDaoFactory());
 
     public static UserService getInstance(){

@@ -3,6 +3,7 @@ package utils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -35,7 +36,7 @@ public class PasswordHasher {
         try {
             passwordToHash = salt + passwordToHash;
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(passwordToHash.getBytes("UTF-8"));
+            byte[] hash = digest.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
             result = bytesToString(hash) + ":" + salt;
         } catch (Exception e) {
             LOGGER.error("Password hashing failure.", e);
