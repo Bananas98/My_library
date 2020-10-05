@@ -38,9 +38,9 @@ public class UserService {
         }
     }
 
-    public Optional<User> getByLogin(String phoneNumber) {
+    public Optional<User> getByLogin(String login) {
         try (UserDao userDao = daoFactory.createUserDao()) {
-            return userDao.getByLogin(phoneNumber);
+            return userDao.getByLogin(login);
         }
     }
 

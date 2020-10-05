@@ -1,4 +1,4 @@
-package controller.command.impl.account;
+package controller.command.impl.authorization;
 
 import controller.command.Command;
 import controller.constants.Page;
@@ -21,27 +21,27 @@ public class PostLoginCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if (request.getAttribute(Parameters.USER) != null) {
-            return Page.HOME;
+        if (request.getAttribute("user") != null) {
+            return "/index.jsp";
         }
 
         LoginDto loginDto = getUserInput(request);
 
         if (!validateUserInput(loginDto)) {
-            request.setAttribute(Parameters.ERROR, LocaleMessage.INVALID_LOGIN_DATA);
-            return Page.LOGIN_PAGE;
+            request.setAttribute("error", LocaleMessage.INVALID_LOGIN_DATA);
+            return "/WEB-INF/pages/login.jsp";
         }
 
         User user = userService.signInUser(loginDto);
         if (user == null) {
-            return Page.LOGIN_PAGE;
+            return "/WEB-INF/pages/login.jsp";
         }
-        request.getSession().setAttribute(Parameters.USER, user);
-        return Page.HOME;
+        request.getSession().setAttribute("user", user);
+        return "/index.jsp";
     }
 
     private LoginDto getUserInput(HttpServletRequest request) {
-        return new LoginDto(request.getParameter(Parameters.PHONE_NUMBER), request.getParameter(Parameters.PASSWORD));
+        return new LoginDto(request.getParameter("email"), request.getParameter("password"));
     }
 
     private boolean validateUserInput(LoginDto loginDto) {

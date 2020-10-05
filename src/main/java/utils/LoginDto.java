@@ -16,7 +16,7 @@ public class LoginDto {
         return email;
     }
 
-    public void setPhoneNumber(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -50,7 +50,7 @@ public class LoginDto {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("LoginDto{");
-        sb.append("phoneNumber='").append(email).append('\'');
+        sb.append("email='").append(email).append('\'');
         sb.append(", password='").append(password).append('\'');
         sb.append('}');
         return sb.toString();

@@ -13,13 +13,13 @@ public class ChangeLocaleCommand implements Command {
 
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         setLocale(request);
-        return Page.HOME;
+        return "/index.jsp";
     }
 
     private void setLocale(HttpServletRequest request) {
-        String selectedLanguage = request.getParameter(Parameters.LANG);
+        String selectedLanguage = request.getParameter("lang");
         Locale chosenLocale = Locale.US;
-        request.getSession().setAttribute(Parameters.LOCALE, chosenLocale);
+        request.getSession().setAttribute("locale", chosenLocale);
         LocaleManager.setResourceBundleLocale(chosenLocale);
     }
 }

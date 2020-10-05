@@ -1,10 +1,10 @@
-package controller.command.impl.account;
-
+package controller.command.impl.authorization;
 
 
 import controller.command.Command;
 import controller.constants.Page;
 import controller.constants.Parameters;
+import model.entity.Role;
 import model.entity.User;
 import model.services.UserService;
 import utils.Validator;
@@ -25,17 +25,18 @@ public class PostSignUpCommand implements Command {
         User user = parseRequest(request);
         if (validateUserInput(user)) {
             createUser(user, request);
-        } else request.setAttribute(Parameters.ERROR, LocaleMessage.INVALID_INPUT);
-        return Page.SIGN_UP;
+        } else request.setAttribute("error", LocaleMessage.INVALID_INPUT);
+        return "/WEB-INF/pages/signUp.jsp";
     }
 
     private User parseRequest(HttpServletRequest request) {
-        return new User.Builder().setName(request.getParameter(Parameters.NAME))
-                                 .setPassword(request.getParameter(Parameters.PASSWORD))
-                                 .setEmail(request.getParameter(Parameters.EMAIL)).build();
+        return new User.Builder().setName(request.getParameter("name"))
+                .setPassword(request.getParameter("password"))
+                .setEmail(request.getParameter("email"))
+                .setRole(Role.valueOf(request.getParameter("role"))).build();
     }
 
-    private boolean validateUserInput(User user){
+    private boolean validateUserInput(User user) {
         Validator v = Validator.getInstance();
         return v.validateEmail(user.getEmail()) && v.validatePassword(user.getPassword()) &&
                 v.validateName(user.getName());
@@ -45,9 +46,9 @@ public class PostSignUpCommand implements Command {
         UserService userService = UserService.getInstance();
         userService.createUser(user);
         if (user.getId() != null) {
-            request.setAttribute(Parameters.USER_ID, user.getId());
+            request.setAttribute("id", user.getId());//user
         } else {
-            request.setAttribute(Parameters.ERROR, LocaleMessage.SIGN_UP_ERROR);
+            request.setAttribute("error", LocaleMessage.SIGN_UP_ERROR);
         }
     }
 }

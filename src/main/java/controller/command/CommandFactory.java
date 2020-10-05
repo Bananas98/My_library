@@ -2,9 +2,7 @@ package controller.command;
 
 import controller.command.impl.HomeCommand;
 import controller.command.impl.PageNotFoundCommand;
-import controller.command.impl.account.GetLoginCommand;
-import controller.command.impl.account.GetSignUpCommand;
-import controller.command.impl.account.LogoutCommand;
+import controller.command.impl.authorization.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -19,10 +17,11 @@ public class CommandFactory {
 
     static {
         commands.put("GET:", new HomeCommand());
-        commands.put("GET:pageNotFound", new PageNotFoundCommand());
         commands.put("GET:login", new GetLoginCommand());
-        commands.put("GET:logout", new LogoutCommand());
+        commands.put("POST:login", new PostLoginCommand());
         commands.put("GET:signUp", new GetSignUpCommand());
+        commands.put("POST:signUp", new PostSignUpCommand());
+        commands.put("GET:pageNotFound", new PageNotFoundCommand());
     }
 
     public static Command getCommand(HttpServletRequest request) {

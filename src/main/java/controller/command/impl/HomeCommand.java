@@ -12,7 +12,7 @@ public class HomeCommand implements Command {
 
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        return Page.HOME;
+        return "/index.jsp";
     }
 
 }

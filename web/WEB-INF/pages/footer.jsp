@@ -9,7 +9,9 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <p class="pull-left">Copyright &copy; 2020</p>
+                <div style="text-align: center;">
+                    <p>Copyright &copy; 2020</p>
+                </div>
             </div>
         </div>
     </div>

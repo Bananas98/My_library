@@ -1,4 +1,4 @@
-package controller.command.impl.account;
+package controller.command.impl.authorization;
 
 
 
@@ -14,7 +14,7 @@ public class GetSignUpCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return Page.SIGN_UP;
+        return "/WEB-INF/pages/signUp.jsp";
     }
 
 }

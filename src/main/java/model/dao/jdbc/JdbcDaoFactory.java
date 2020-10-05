@@ -17,7 +17,7 @@ public class JdbcDaoFactory extends DaoFactory {
     public JdbcDaoFactory() {
         try {
             InitialContext ic = new InitialContext();
-            dataSource = (DataSource) ic.lookup("java:comp/env/jdbc/library_5");
+            dataSource = (DataSource) ic.lookup("java:comp/env/jdbc/library_db");
 
         } catch (Exception e) {
             throw new DatabaseException(e);

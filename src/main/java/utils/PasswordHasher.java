@@ -61,8 +61,7 @@ public class PasswordHasher {
     }
 
     public boolean verifyPassword(String realPassword, String stringToVerify){
-        String salt = realPassword.split(":")[1];
-        if (realPassword.equals(hashPassword(stringToVerify, salt))) return true;
-        else return false;
+        String salt = realPassword.split(":")[0];
+        return realPassword.equals(hashPassword(stringToVerify, salt));
     }
 }
