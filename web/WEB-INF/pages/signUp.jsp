@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             <label for="email"><fmt:message key="library.field.enter.email" bundle="${bundle}" />:</label>
-            <input type="email" class="form-control" id="email" placeholder=<fmt:message key="library.field.enter.email" bundle="${bundle}" /> email="email">
+            <input type="name" class="form-control" id="email" placeholder=<fmt:message key="library.field.enter.email" bundle="${bundle}" /> name="email">
         </div>
         <div class="form-group">
             <label for="password"><fmt:message key="library.field.password" bundle="${bundle}" />:</label>
