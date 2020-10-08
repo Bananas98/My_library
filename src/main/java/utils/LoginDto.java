@@ -7,7 +7,7 @@ public class LoginDto {
     private String email;
     private String password;
 
-    public LoginDto(String email, String password) {
+    public LoginDto( String password, String email) {
         this.email = email;
         this.password = password;
     }
