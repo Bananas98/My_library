@@ -24,8 +24,8 @@ public class JdbcUserDao implements UserDao {
         String createQuery = "INSERT INTO USERS (name, password, email, role) VALUES (?, ?, ?, ?)";
         try (PreparedStatement query = connection.prepareStatement(createQuery, Statement.RETURN_GENERATED_KEYS)) {
             query.setString(1, user.getName());
-            query.setString(2, user.getPassword());
-            query.setString(3, user.getEmail());
+            query.setString(3, user.getPassword());
+            query.setString(2, user.getEmail());
             query.setString(4, user.getRole().name().toLowerCase());
             query.executeUpdate();
 
@@ -79,9 +79,9 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public Optional<User> getByLogin(String email) {
-        String getByPhoneNumber  = "SELECT * FROM users WHERE email = ?";
+        String getByLogin = "SELECT * FROM users WHERE email = ?";
         Optional<User> user = Optional.empty();
-        try (PreparedStatement query = connection.prepareStatement(getByPhoneNumber)) {
+        try (PreparedStatement query = connection.prepareStatement(getByLogin)) {
             query.setString(1, email);
             ResultSet resultSet = query.executeQuery();
             if (resultSet.next()) {
@@ -94,7 +94,7 @@ public class JdbcUserDao implements UserDao {
     }
 
     static User parseResultSet(ResultSet resultSet) throws SQLException {
-        return new User.Builder().setId(resultSet.getInt("users.id"))
+        return new User.Builder().setId(resultSet.getInt("id"))
                 .setName(resultSet.getString("name"))
                 .setPassword(resultSet.getString("password"))
                 .setEmail(resultSet.getString("email"))

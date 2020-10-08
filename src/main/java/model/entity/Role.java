@@ -2,7 +2,7 @@ package model.entity;
 
 public enum Role {
 
-    READER("enum.role.reader"), LIBRARIAN("enum.role.librarian"), ADMIN("enum.role.admin");
+    READER("reader"), LIBRARIAN("librarian"), ADMIN("admin");
 
     private String localeKey;
 

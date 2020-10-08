@@ -2,8 +2,6 @@ package controller.command.impl.authorization;
 
 
 import controller.command.Command;
-import controller.constants.Page;
-import controller.constants.Parameters;
 import model.entity.Role;
 import model.entity.User;
 import model.services.UserService;
@@ -37,16 +35,17 @@ public class PostSignUpCommand implements Command {
     }
 
     private boolean validateUserInput(User user) {
-        Validator v = Validator.getInstance();
-        return v.validateEmail(user.getEmail()) && v.validatePassword(user.getPassword()) &&
-                v.validateName(user.getName());
+//        Validator v = Validator.getInstance();
+//        return v.validateEmail(user.getEmail()) && v.validatePassword(user.getPassword()) &&
+//                v.validateName(user.getName());
+        return true;
     }
 
     private void createUser(User user, HttpServletRequest request) {
         UserService userService = UserService.getInstance();
         userService.createUser(user);
         if (user.getId() != null) {
-            request.setAttribute("id", user.getId());//user
+            request.setAttribute("users_id", user.getId());
         } else {
             request.setAttribute("error", LocaleMessage.SIGN_UP_ERROR);
         }

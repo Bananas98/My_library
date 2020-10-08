@@ -41,7 +41,7 @@ public class PostLoginCommand implements Command {
     }
 
     private LoginDto getUserInput(HttpServletRequest request) {
-        return new LoginDto(request.getParameter("email"), request.getParameter("password"));
+        return new LoginDto( request.getParameter("password"),request.getParameter("email"));
     }
 
     private boolean validateUserInput(LoginDto loginDto) {

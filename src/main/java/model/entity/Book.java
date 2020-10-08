@@ -7,10 +7,12 @@ public class Book {
     private int id;
     private String name;
     private double delay_penalty;
+    private int amount;
+
     private Date date_of_release;
+
     private String categories;
     private String author;
-
     public int getId() {
         return id;
     }
@@ -41,6 +43,14 @@ public class Book {
 
     public void setDate_of_release(Date date_of_release) {
         this.date_of_release = date_of_release;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public String getCategories() {

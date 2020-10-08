@@ -26,7 +26,6 @@ public class UserService {
 
     public void createUser(User user){
         user.setPassword(PasswordHasher.getInstance().hashPassword(user.getPassword()));
-        user.setRole(Role.READER);
         try (UserDao userDao = daoFactory.createUserDao()) {
             userDao.create(user);
         }
@@ -51,7 +50,7 @@ public class UserService {
         }
         boolean verified = PasswordHasher.getInstance().
                 verifyPassword(userOptional.get().getPassword(), loginDto.getPassword());
-        if (userOptional.isPresent() && verified) {
+        if (verified) {
             return userOptional.get();
         }
         return null;

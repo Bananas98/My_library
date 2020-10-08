@@ -41,7 +41,7 @@ public class PasswordHasher {
         } catch (Exception e) {
             LOGGER.error("Password hashing failure.", e);
         }
-        return result;
+        return passwordToHash;
     }
 
     private String createSalt() throws NoSuchAlgorithmException {

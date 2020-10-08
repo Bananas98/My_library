@@ -12,14 +12,13 @@
     <h2><fmt:message key="library.login" bundle="${bundle}"/></h2>
     <form action="./login" method="POST" role="form">
         <div class="form-group">
-            <label for=><fmt:message key="library.field.phone.email" bundle="${bundle}" />:</label>
+            <label for=><fmt:message key="library.field.enter.email" bundle="${bundle}" />:</label>
             <input class="form-control" id="email" placeholder="123@gmail.com" name="email">
         </div>
         <div class="form-group">
             <label for="password"><fmt:message key="library.field.password" bundle="${bundle}" />:</label>
             <input type="password" class="form-control" id="password"
-                   placeholder=<fmt:message key="library.field.enter.password" bundle="${bundle}"/>
-                           name="password">
+                   placeholder=<fmt:message key="library.field.enter.password" bundle="${bundle}"/> name="password">
         </div>
         <button type="submit" class="btn btn-default"><fmt:message key="library.button.submit" bundle="${bundle}" /></button>
     </form>
