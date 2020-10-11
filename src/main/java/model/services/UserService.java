@@ -31,7 +31,7 @@ public class UserService {
         }
     }
 
-    public Optional<User> getUserById(Long readerId) {
+    public Optional<User> getUserById(int readerId) {
         try (UserDao userDao = daoFactory.createUserDao()) {
             return userDao.getById(readerId);
         }

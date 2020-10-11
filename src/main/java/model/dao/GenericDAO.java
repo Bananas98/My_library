@@ -10,7 +10,7 @@ public interface GenericDAO<T> extends AutoCloseable {
 
     void delete(T object);
 
-    Optional<T> getById(Long key);
+    Optional<T> getById(int key);
 
     void close();
 }

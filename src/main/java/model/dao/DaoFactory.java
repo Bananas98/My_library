@@ -20,17 +20,17 @@ public abstract class DaoFactory {
 
     public abstract UserDao createUserDao(DaoConnection connection);
 
-//    public abstract BookDao createBookDescriptionDao();
-//
-//    public abstract BookDao createBookDescriptionDao(DaoConnection connection);
+    public abstract BookDao createBookDao();
+
+    public abstract BookDao createBookDao(DaoConnection connection);
 //
 //    public abstract BookInstanceDao createBookInstanceDao();
 //
 //    public abstract BookInstanceDao createBookInstanceDao(DaoConnection connection);
 //
-//    public abstract AuthorDao createAuthorDao();
-//
-//    public abstract AuthorDao createAuthorDao(DaoConnection connection);
+    public abstract AuthorDao createAuthorDao();
+
+    public abstract AuthorDao createAuthorDao(DaoConnection connection);
 //
 //    public abstract OrderDao createBookOrderDao();
 //

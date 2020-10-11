@@ -55,16 +55,9 @@ CREATE TABLE IF NOT EXISTS `library_db`.`books`
     `delay_penalty`   DOUBLE      NOT NULL,
     `amount`          INT         NOT NULL,
     `id_categories`   INT         NOT NULL,
-    `id_author`       INT         NOT NULL,
     `date_of_release` DATE        NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX `id_author_idx` (`id_author` ASC) VISIBLE,
     INDEX `id_categories_idx` (`id_categories` ASC) VISIBLE,
-    CONSTRAINT `id_author`
-        FOREIGN KEY (`id_author`)
-            REFERENCES `library_db`.`authors` (`id`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION,
     CONSTRAINT `id_categories`
         FOREIGN KEY (`id_categories`)
             REFERENCES `library_db`.`categories` (`id`)
@@ -76,6 +69,29 @@ CREATE TABLE IF NOT EXISTS `library_db`.`books`
 
 -- -----------------------------------------------------
 -- Table `library_db`.`users`
+-- -----------------------------------------------------
+create TABLE if not exists `library_db`.`book_author`
+(
+    `id`          INT  NOT NULL AUTO_INCREMENT,
+    `author_id`     INT  NOT NULL,
+    `book_id`     INT  NOT NULL,
+
+    CONSTRAINT `author_id`
+        FOREIGN KEY (`author_id`)
+            REFERENCES `library_db`.`authors` (`id`)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+    CONSTRAINT `book_id`
+        FOREIGN KEY (`book_id`)
+            REFERENCES `library_db`.`books` (`id`)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+
+);
+
+
+-- -----------------------------------------------------
+-- Table `library_db`.`user_book`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `library_db`.`users`
 (
@@ -89,10 +105,6 @@ CREATE TABLE IF NOT EXISTS `library_db`.`users`
 )
     ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `library_db`.`user_book`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `library_db`.`user_book`
 (
     `id`          INT  NOT NULL AUTO_INCREMENT,
@@ -115,7 +127,6 @@ CREATE TABLE IF NOT EXISTS `library_db`.`user_book`
             ON UPDATE NO ACTION
 )
     ENGINE = InnoDB;
-
 
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;

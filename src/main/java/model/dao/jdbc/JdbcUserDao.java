@@ -64,7 +64,7 @@ public class JdbcUserDao implements UserDao {
         }
     }
 
-    public Optional<User> getById(Long id){
+    public Optional<User> getById(int id){
         String getByLogin  = "SELECT * FROM users WHERE id = ?";
         Optional<User> user = Optional.empty();
         try (PreparedStatement query = connection.prepareStatement(getByLogin)) {
