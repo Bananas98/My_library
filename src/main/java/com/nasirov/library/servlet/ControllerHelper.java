@@ -6,7 +6,7 @@ package com.nasirov.library.servlet;
 
 
 import com.nasirov.library.commands.ICommand;
-import com.nasirov.library.commands.admin.*;
+import com.nasirov.library.commands.librarian.*;
 import com.nasirov.library.commands.readers.*;
 import com.nasirov.library.commands.authorization.CommandLogin;
 import com.nasirov.library.commands.authorization.CommandLogout;
@@ -15,20 +15,21 @@ import com.nasirov.library.commands.authorization.CommandRegistrationPage;
 import com.nasirov.library.commands.adding.CommandAddAuthor;
 import com.nasirov.library.commands.adding.CommandAddBook;
 import com.nasirov.library.commands.adding.CommandAddGenre;
-import com.nasirov.library.commands.host.CommandSetRole;
+import com.nasirov.library.commands.admin.CommandSetRole;
 import com.nasirov.library.commands.search.CommandAuthorBooks;
 import com.nasirov.library.commands.search.CommandAuthorsSearch;
 import com.nasirov.library.commands.search.CommandBookSearch;
 import com.nasirov.library.commands.search.CommandReadersSearch;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 
 public class ControllerHelper {
 
     private static ControllerHelper instance = null;
-    private Map<String, ICommand> commands = new HashMap<String, ICommand>();
+    private Map<String, ICommand> commands = new HashMap<>();
 
     private ControllerHelper() {
         commands.put("login", new CommandLogin());

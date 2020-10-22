@@ -1,8 +1,8 @@
-package com.nasirov.library.commands.host;
+package com.nasirov.library.commands.admin;
 
 import com.nasirov.library.commands.ICommand;
 import com.nasirov.library.models.Reader;
-import com.nasirov.library.services.HostService;
+import com.nasirov.library.services.AdminService;
 import com.nasirov.library.managers.Config;
 import com.nasirov.library.managers.Message;
 
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class CommandSetRole implements ICommand {
-    private HostService hostService=HostService.getInstance();
+    private AdminService adminService = AdminService.getInstance();
 
     private final static String USER_ID="userId";
     private final static String IS_USER_ADMIN="admin";
@@ -28,15 +28,15 @@ public class CommandSetRole implements ICommand {
         Boolean admin= Boolean.valueOf(request.getParameter(IS_USER_ADMIN));
         String locale= (String) request.getSession().getAttribute(LOCALE);
         if(!admin){
-            if(!hostService.isReaderHasDebt(userId)) {
-                hostService.makeAdmin(userId);
+            if(!adminService.isReaderHasDebt(userId)) {
+                adminService.makeAdmin(userId);
             }else {
                 request.setAttribute("message", Message.getInstance(locale).getString(Message.USER_NEED_RETURN_BOOKS));
             }
         }else{
-            hostService.unmakeAdmin(userId);
+            adminService.unmakeAdmin(userId);
         }
-        request.setAttribute("users",hostService.getUsersForHost());
+        request.setAttribute("users", adminService.getUsersForHost());
         return Config.getInstance().getProperty(Config.HOST);
     }
 }

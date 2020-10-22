@@ -1,10 +1,10 @@
-package com.nasirov.library.commands.admin;
+package com.nasirov.library.commands.librarian;
 
 import com.nasirov.library.commands.ICommand;
 import com.nasirov.library.models.Reader;
 import com.nasirov.library.models.ReaderBook;
 import com.nasirov.library.managers.Config;
-import com.nasirov.library.services.AdminService;
+import com.nasirov.library.services.LibrarianService;
 import com.nasirov.library.services.AuthorizationService;
 import com.nasirov.library.services.IssuanceBookService;
 
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class CommandReaderInfo implements ICommand {
 
-    private AdminService adminService = AdminService.getInstance();
+    private LibrarianService librarianService = LibrarianService.getInstance();
     private IssuanceBookService issuanceBookService = IssuanceBookService.getInstance();
     private AuthorizationService authorizationService=AuthorizationService.getInstance();
 
@@ -30,8 +30,8 @@ public class CommandReaderInfo implements ICommand {
         List<ReaderBook> readerBooks;
         if (authorizationService.isAdmin(currentUser.getRoles())) {
             int readerId = Integer.parseInt(request.getParameter(READER_ID));
-            request.getSession().setAttribute("reader", adminService.getReaderById(readerId));
-            readerBooks = adminService.getBooksOfReaderForAdmin(readerId);
+            request.getSession().setAttribute("reader", librarianService.getReaderById(readerId));
+            readerBooks = librarianService.getBooksOfReaderForAdmin(readerId);
         } else {
             readerBooks = issuanceBookService.getBooksOfReaderForReader(currentUser.getId());
         }
