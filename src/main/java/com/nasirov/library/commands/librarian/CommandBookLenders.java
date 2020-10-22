@@ -5,7 +5,7 @@ import com.nasirov.library.models.Book;
 import com.nasirov.library.models.ReaderBook;
 import com.nasirov.library.services.SearchService;
 import com.nasirov.library.managers.Config;
-import com.nasirov.library.services.LibrarianService;
+import com.nasirov.library.services.AdminService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ public class CommandBookLenders implements ICommand {
 
 
     private SearchService searchService =  SearchService.getInstance();
-    private LibrarianService librarianService = LibrarianService.getInstance();
+    private AdminService adminService=AdminService.getInstance();
     private final static String READER_ID="id";
 
     @Override
@@ -27,9 +27,9 @@ public class CommandBookLenders implements ICommand {
         int id= Integer.parseInt(request.getParameter(READER_ID));
         Book book= searchService.getBooksById(id);
         request.getSession().setAttribute("book",book);
-        List<ReaderBook>readerBooks= librarianService.getReadersForBook(id,1);
+        List<ReaderBook>readerBooks= adminService.getReadersForBook(id,1);
         request.setAttribute("readerBooks",readerBooks);
-        request.getSession().setAttribute("pageCount", librarianService.pageCount(id));
+        request.getSession().setAttribute("pageCount",adminService.pageCount(id));
         Timestamp timestamp=new Timestamp(System.currentTimeMillis());
         request.getSession().setAttribute("currentDate", timestamp);
         return Config.getInstance().getProperty(Config.BOOK_LENDERS);

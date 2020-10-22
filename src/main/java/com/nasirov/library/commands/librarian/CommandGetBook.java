@@ -2,7 +2,7 @@ package com.nasirov.library.commands.librarian;
 
 import com.nasirov.library.commands.ICommand;
 import com.nasirov.library.managers.Config;
-import com.nasirov.library.services.LibrarianService;
+import com.nasirov.library.services.AdminService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,7 @@ import java.io.IOException;
 
 
 public class CommandGetBook implements ICommand {
-    private LibrarianService librarianService = LibrarianService.getInstance();
+    private AdminService adminService=AdminService.getInstance();
     private final static String BOOK_ID="id";
     private final static String DAYS="days";
 
@@ -19,8 +19,8 @@ public class CommandGetBook implements ICommand {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id= Integer.valueOf(request.getParameter(BOOK_ID));
         Integer days=Integer.valueOf(request.getParameter(DAYS));
-        librarianService.getBookToReader(id,days);
-        request.setAttribute("readerBooks", librarianService.getBookOrders());
+        adminService.getBookToReader(id,days);
+        request.setAttribute("readerBooks",adminService.getBookOrders());
         return Config.getInstance().getProperty(Config.ORDERS);
     }
 }

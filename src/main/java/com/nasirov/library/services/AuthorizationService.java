@@ -90,7 +90,7 @@ public class AuthorizationService {
     /**
      *
      * @param roles
-     * @return is user host
+     * @return is user admin
      */
     private boolean isHost(List<Role> roles) {
         for(Role role:roles){
