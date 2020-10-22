@@ -6,7 +6,7 @@ package com.nasirov.library.commands.authorization;
 
 import com.nasirov.library.commands.ICommand;
 import com.nasirov.library.models.Reader;
-import com.nasirov.library.services.HostService;
+import com.nasirov.library.services.AdminService;
 import com.nasirov.library.services.SearchService;
 import com.nasirov.library.managers.Config;
 import com.nasirov.library.managers.Message;
@@ -25,7 +25,7 @@ public class CommandLogin implements ICommand {
 
     private SearchService searchService =  SearchService.getInstance();
     private AuthorizationService authorizationService = AuthorizationService.getInstance();
-    private HostService hostService=HostService.getInstance();
+    private AdminService adminService = AdminService.getInstance();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +36,7 @@ public class CommandLogin implements ICommand {
         if (reader!=null) {
             request.getSession().setAttribute("user",reader);
             if(reader.getHost()){
-                request.setAttribute("users",hostService.getUsersForHost());
+                request.setAttribute("users", adminService.getUsersForHost());
                 return Config.getInstance().getProperty(Config.HOST);
             }
             request.getSession().setAttribute("books", searchService.getAllBooks());
