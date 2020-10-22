@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 public class Config {
 
 
-    public static final String HOST = "HOST";
+    public static final String ADMIN = "ADMIN";
     private static Config instance;
 
     private ResourceBundle resource;

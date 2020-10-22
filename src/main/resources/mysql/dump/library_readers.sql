@@ -39,7 +39,7 @@ CREATE TABLE `readers` (
 
 LOCK TABLES `readers` WRITE;
 /*!40000 ALTER TABLE `readers` DISABLE KEYS */;
-INSERT INTO `readers` VALUES (1,'root','71c3cc013f038fd58799643fde58984b','root@gmail.com'),(2,'david','7cac289f917f6e3466ac84e1c2693b34','David@gmail.com'),(3,'Dima','9a0b7a29f393fb40a46ae623c2df67d1','DIma@gmail.com'),(4,'Igor','18d0305a04121c06694b244c4c905b2e','Igor@gmail.com'),(5,'Alina','5704ca9f206c936ce64feda8a45ea43e','Alina@gmail.com'),(6,'Max','2ac8067f411339f49592b6e8ccb22941','DMax@gmail.com');
+INSERT INTO `readers` VALUES (1,'root','71c3cc013f038fd58799643fde58984b','root@gmail.com'),(2,'david','d5bbd4b23f80e2bdaa8af760e0602773','davidnasirov@gmail.com'),(3,'Dima','9a0b7a29f393fb40a46ae623c2df67d1','DIma@gmail.com'),(4,'Alibaba','ac6de2e1b5b9e60f4fc5f027285cbd74','davidnasirov334@gmail.com'),(5,'Alina','5704ca9f206c936ce64feda8a45ea43e','Alina@gmail.com'),(6,'Max','2ac8067f411339f49592b6e8ccb22941','DMax@gmail.com');
 /*!40000 ALTER TABLE `readers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;

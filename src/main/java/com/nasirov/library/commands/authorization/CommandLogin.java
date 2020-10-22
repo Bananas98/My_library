@@ -37,7 +37,7 @@ public class CommandLogin implements ICommand {
             request.getSession().setAttribute("user",reader);
             if(reader.getHost()){
                 request.setAttribute("users", adminService.getUsersForHost());
-                return Config.getInstance().getProperty(Config.HOST);
+                return Config.getInstance().getProperty(Config.ADMIN);
             }
             request.getSession().setAttribute("books", searchService.getAllBooks());
             request.getServletContext().setAttribute("genres", searchService.getAllGenres());

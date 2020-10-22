@@ -37,6 +37,6 @@ public class CommandSetRole implements ICommand {
             adminService.unmakeAdmin(userId);
         }
         request.setAttribute("users", adminService.getUsersForHost());
-        return Config.getInstance().getProperty(Config.HOST);
+        return Config.getInstance().getProperty(Config.ADMIN);
     }
 }

@@ -45,12 +45,12 @@
                         <input type="hidden" name="admin" value="${r.admin}">
                         <c:choose>
                             <c:when test="${r.admin}">
-                                <button type="submit" class="btn btn-danger"><fmt:message key="host.unamkeLibrarian" bundle="${lang}"/></button>
+                                <button type="submit" class="btn btn-danger"><fmt:message key="admin.unamkeLibrarian" bundle="${lang}"/></button>
 
                             </c:when>
 
                             <c:otherwise>
-                                <button type="submit" class="btn btn-primary"><fmt:message key="host.makeLibrarian" bundle="${lang}"/></button>
+                                <button type="submit" class="btn btn-primary"><fmt:message key="admin.makeLibrarian" bundle="${lang}"/></button>
                             </c:otherwise>
                         </c:choose>
                     </form>
